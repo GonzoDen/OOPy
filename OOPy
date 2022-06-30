@@ -35,4 +35,6 @@ STATIC VS CLASS METHODS
 
 class and static methods can be called from the instance level
 
-
+#item1 = Item()
+#str = str("4")
+#same

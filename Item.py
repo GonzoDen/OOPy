@@ -15,12 +15,26 @@ class Item:
         assert quantity >= 0, f"Quantity {quantity} is not greater than or equal to zero"
 
         #Assign to self Object
-        self.name = name
+        self.__name = name #name is a private
         self.price = price
         self.quantity = quantity #quantity=0 is a default value
 
         #append instance to the list
         Item.all.append(self)
+
+    #ENCAPSULATION IN PY
+    #GETTER
+    @property
+    def name(self):
+        return self.__name
+
+    #SETTER
+    @name.setter
+    def name(self, value):
+        if len(value) > 10:
+            raise Exception("Your name is too long")
+        else:
+            self.__name = value
 
     def calculate_total_price(self):
         return self.price * self.quantity
@@ -29,6 +43,7 @@ class Item:
         self.price = self.price * (1 -self.default_discount)
 
     #made as a class method to avoid being available for instances
+    #@ is a decorators, i.e. functions that you can use before other functions
     @classmethod
     def instantiate_from_csv(cls):
         with open('items.csv', 'r') as f:
