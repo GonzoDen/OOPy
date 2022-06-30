@@ -1,3 +1,6 @@
+import csv
+
+
 class Item:
     #class attribute, available for both class and instance level
     #__dict__ magic class attribute
@@ -26,6 +29,21 @@ class Item:
     def apply_discount(self):
         self.price = self.price * (1 -self.default_discount)
 
+    #made as a class method to avoid being available for instances
+    @classmethod
+    def instantiate_from_csv(cls):
+        with open('items.csv', 'r') as f:
+            reader = csv.DictReader(f)
+            items = list(reader)
+
+        for item in items:
+            Item(
+                name = item.get('name'),
+                price = float(item.get('price')),
+                quantity = int(item.get('quantity'))
+            )
+
+
     #this is usually done to avoid
     """for item in Item.all:
     print(item.name)"""
@@ -37,16 +55,7 @@ class Item:
 #str = str("4")
 #same
 
-item1 = Item("iPhone", 100, 0)
-
-item2 = Item("Mac", 10, 3)
-
-print(item1.calculate_total_price())
-item1.apply_discount()
-print(item1.price)
-
-
-
+Item.instantiate_from_csv()
 print(Item.all)
 
 
