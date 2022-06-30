@@ -1,0 +1,38 @@
+OOPy
+
+Class Item:
+	pay_rate = 0.8 #class attribute
+	def __init__ (self, name : str, price, quantity=0) # : str means accepts string only, =0 means that default is 0
+		assert price >= 0 f"{price} should be greater than 0" #f"" statement is optional
+
+
+Item.pay_rate
+
+
+because object is always send to every method as an argument than you can use it's properties from constructor in other methods vs. functions
+class attributes - attribute that belongs to the class itself
+
+raise Exception("WTF you are doing")
+
+Encapsulation:
+@property - getter
+@name.setter - setter
+
+Incapsulation - restricting from changing the values
+	__name
+Abstraction
+	__method - can be accessible only inside the class, private method, everything that is uneccessary to be called
+Inheritance - reuse code across of the classes
+
+Polymorphism
+
+STATIC VS CLASS METHODS
+
+#@static method is smth that has relationship with class but not unique for each instance
+#@static method is like ordinary method but within the class
+
+@classmethod usually used to manipulate data
+
+class and static methods can be called from the instance level
+
+
