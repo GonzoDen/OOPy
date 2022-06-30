@@ -43,6 +43,16 @@ class Item:
                 quantity = int(item.get('quantity'))
             )
 
+    #static methods do not send class/instance as the 1st arg
+    @staticmethod
+    def is_integer(num):
+        #
+        if isinstance(num, float):
+            return num.is_integer()
+        elif isinstance(num, int):
+            return True
+        else:
+            return False
 
     #this is usually done to avoid
     """for item in Item.all:
@@ -57,6 +67,8 @@ class Item:
 
 Item.instantiate_from_csv()
 print(Item.all)
+
+print(Item.is_integer(4.0))
 
 
 
